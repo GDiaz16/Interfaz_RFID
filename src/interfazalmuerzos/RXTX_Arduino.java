@@ -11,7 +11,7 @@ public class RXTX_Arduino{
     private static String NumberUID = "";
     static String NombreCarrera[][] = new String[4][2];
     static String Tag[] = new String[4];
-    static int DocSaldos[][] = new int [4][2];
+    static long DocSaldos[][] = new long [4][2];
     int aux=0;
     static String photo="goku";
     
@@ -25,9 +25,9 @@ public class RXTX_Arduino{
         NombreCarrera[2][1] = "Medicina";
         NombreCarrera[3][1] = "Derecho";
         DocSaldos[0][0] = 1013681625;
-        DocSaldos[1][0] = 990800000;
-        DocSaldos[2][0] = 945984984;
-        DocSaldos[3][0] = 946541611;
+        DocSaldos[1][0] = 1085340778;
+        DocSaldos[2][0] = 99081501302L;
+        DocSaldos[3][0] = 99021513683L;
         DocSaldos[0][1] = 10000;
         DocSaldos[1][1] = 15000;
         DocSaldos[2][1] = 18000;
@@ -48,13 +48,13 @@ public class RXTX_Arduino{
                 photo = "mario";
             break;
             case 1:
-                photo = "goku";
+                photo = "mauriciomeza";
             break;
             case 2:
-                photo = "vegeta";
+                photo = "josearanda";
             break;
             case 3:
-                photo = "luigi";
+                photo = "sebastiantovar";
             break;
         }
         for (int i = 0; i < Tag.length; i++) {
