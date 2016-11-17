@@ -63,12 +63,12 @@ public class RXTX_Arduino{
             if (NumberUID.equals(Tag[i])) {
                 textoNombre.setText(NombreCarrera[i][0]);
                 textoCarrera.setText(NombreCarrera[i][1]);
-                textoDocumento.setText(Doc);
-                textoSaldo.setText("$ " + Saldo);
+                textoDocumento.setText("N° Documento: "+Doc);
+                textoSaldo.setText("Saldo: $ " + Saldo);
                 aux = i;
                 Foto.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass()
                         .getResource("/interfazalmuerzos/Imagenes/" + RXTX_Arduino.photo + ".jpg"))
-                        .getImage().getScaledInstance(200, 250, Image.SCALE_SMOOTH)));
+                        .getImage().getScaledInstance(150, 200, Image.SCALE_SMOOTH)));
 
             }
 

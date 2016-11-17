@@ -1,27 +1,32 @@
 
 package interfazalmuerzos;
 
+
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.LayoutManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 public class Fondo extends javax.swing.JPanel {
     Image Background;
     Textwriter writer = new Textwriter();
+   // Registro formulario = new Registro();
+    //VentanadeCobro frame;
     public Fondo() {
         initComponents();
           Background = new ImageIcon(this
             .getClass()
             .getResource("/interfazalmuerzos/Imagenes/Backgroundcyt.jpg")).getImage();
     }
-    ///private Image imagen;
+    
  
    
     @Override
     public void paint(Graphics g) {
-        g.drawImage(Background, 0, 0, getWidth(), getHeight(), this);
+        g.drawImage(Background, 0, 0, getWidth(), getHeight()/3, this);
  
         setOpaque(false);
         super.paint(g);
@@ -30,26 +35,23 @@ public class Fondo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Saldo = new javax.swing.JLabel();
         botonCobrar = new javax.swing.JButton();
         Foto = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
-        Nombre = new javax.swing.JLabel();
-        Documento = new javax.swing.JLabel();
-        Carrera = new javax.swing.JLabel();
         textoNombre = new javax.swing.JLabel();
         textoCarrera = new javax.swing.JLabel();
         textoDocumento = new javax.swing.JLabel();
         textoSaldo = new javax.swing.JLabel();
+        botonRegistrar = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(770, 441));
+        setBackground(new java.awt.Color(226, 224, 224));
+        setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(450, 603));
 
-        Saldo.setBackground(new java.awt.Color(204, 204, 204));
-        Saldo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        Saldo.setText("Saldo:");
-
-        botonCobrar.setFont(new java.awt.Font("OCR A Extended", 0, 24)); // NOI18N
-        botonCobrar.setText("COBRAR");
+        botonCobrar.setBackground(new java.awt.Color(136, 100, 66));
+        botonCobrar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        botonCobrar.setForeground(new java.awt.Color(255, 255, 255));
+        botonCobrar.setText("Cobrar");
         botonCobrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCobrarActionPerformed(evt);
@@ -58,99 +60,98 @@ public class Fondo extends javax.swing.JPanel {
 
         Foto.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazalmuerzos/Imagenes/UN.png"))); // NOI18N
+        Foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        titulo.setFont(new java.awt.Font("Nirmala UI", 0, 36)); // NOI18N
+        titulo.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
         titulo.setText("Cafeterias UN");
 
-        Nombre.setBackground(new java.awt.Color(204, 204, 204));
-        Nombre.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        Nombre.setText("Nombre:");
-
-        Documento.setBackground(new java.awt.Color(204, 204, 204));
-        Documento.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        Documento.setText("Documento:");
-
-        Carrera.setBackground(new java.awt.Color(204, 204, 204));
-        Carrera.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        Carrera.setText("Carrera:");
-
         textoNombre.setBackground(new java.awt.Color(204, 204, 204));
-        textoNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        textoNombre.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        textoNombre.setForeground(new java.awt.Color(102, 102, 102));
+        textoNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoNombre.setText("Nombre");
+        textoNombre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         textoNombre.setName(""); // NOI18N
 
         textoCarrera.setBackground(new java.awt.Color(204, 204, 204));
-        textoCarrera.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        textoCarrera.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        textoCarrera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoCarrera.setText("Carrera");
+        textoCarrera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         textoDocumento.setBackground(new java.awt.Color(204, 204, 204));
-        textoDocumento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        textoDocumento.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        textoDocumento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoDocumento.setText("Documento");
+        textoDocumento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         textoSaldo.setBackground(new java.awt.Color(204, 204, 204));
-        textoSaldo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        textoSaldo.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        textoSaldo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoSaldo.setText("Saldo:");
+        textoSaldo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        botonRegistrar.setBackground(new java.awt.Color(202, 153, 40));
+        botonRegistrar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        botonRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        botonRegistrar.setLabel("Registrar");
+        botonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(textoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Documento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Carrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Saldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textoCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textoSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 62, Short.MAX_VALUE))))
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textoSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                            .addComponent(textoCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textoDocumento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(titulo))
+                        .addGap(97, 97, 97)
+                        .addComponent(titulo)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(284, 284, 284)
-                        .addComponent(botonCobrar)))
-                .addGap(34, 34, 34))
+                        .addGap(134, 134, 134)
+                        .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonCobrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addComponent(titulo)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addComponent(botonCobrar)
-                        .addGap(41, 41, 41))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Documento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textoCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Carrera))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Saldo)
-                            .addComponent(textoSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(30, 30, 30)
+                .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textoSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonCobrar)
+                .addGap(26, 26, 26)
+                .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -165,14 +166,22 @@ public class Fondo extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_botonCobrarActionPerformed
 
+    private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
+        // TODO add your handling code here:
+        //setVisible(false);
+        //this.add(new JPanel());
+        //formulario.setVisible(true);
+        //formulario.setEnabled(true);
+        //frame.add(formulario);
+        //frame.repaint();
+        
+    }//GEN-LAST:event_botonRegistrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Carrera;
-    private javax.swing.JLabel Documento;
     public javax.swing.JLabel Foto;
-    private javax.swing.JLabel Nombre;
-    private javax.swing.JLabel Saldo;
     private javax.swing.JButton botonCobrar;
+    private static javax.swing.JButton botonRegistrar;
     public javax.swing.JLabel textoCarrera;
     public javax.swing.JLabel textoDocumento;
     public javax.swing.JLabel textoNombre;
