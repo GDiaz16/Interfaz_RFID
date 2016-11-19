@@ -3,8 +3,7 @@ package interfazalmuerzos;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -17,8 +16,8 @@ import javax.swing.JOptionPane;
 
 public class Textwriter {
     String[] datos; 
-    
-    public void guardardatos(){
+    int numeroAleatorio = (int) (Math.random()*5+1);
+    public void guardardatos(String NumberUID, String nombre, String carrera, String documento){
         File f = new File("Archivo.txt");
 
 //Escritura
@@ -26,7 +25,7 @@ public class Textwriter {
 
             FileWriter w = new FileWriter(f);
             BufferedWriter bw = new BufferedWriter(w);
-            bw.write("Esta es una linea de codigo.......");
+            bw.write(NumberUID+"$"+nombre+"$"+carrera+"$"+documento);
             bw.flush();
            
             bw.close();
@@ -40,25 +39,3 @@ public class Textwriter {
 
 }
 
-//       
-//    }
-//    private void leeDatos() { 
-//        String linea = null;//Para guardar los datos de forma temporal 
-//        if (fichero.exists()) {//Si se ha creado el fichero 
-//            try { 
-//                Scanner lector = new Scanner(fichero); 
-//                while(lector.hasNextLine()){ 
-//                linea=lector.next(); 
-//                } 
-//                datos = linea.split(","); 
-//                 System.out.println(datos[0]); 
-//                 System.out.println(datos[1]); 
-//                 System.out.println(datos[2]); 
-//            } catch (FileNotFoundException ex) { 
-//                System.out.print("No se pudo abrir el archivo!"+ex.getMessage()); 
-//            } 
-//        } 
-
-
-    
-   

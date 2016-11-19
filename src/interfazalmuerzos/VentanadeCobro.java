@@ -2,18 +2,22 @@ package interfazalmuerzos;
 
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
+import java.awt.Panel;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 
 import panamahitek.Arduino.PanamaHitek_Arduino;
 
 public class VentanadeCobro extends javax.swing.JFrame {
-
+    //Fondo p;
     static PanamaHitek_Arduino Arduino = new PanamaHitek_Arduino();
     static RXTX_Arduino Lector = new RXTX_Arduino();
-    private static final Fondo Contenedor = new Fondo();
-   // private static final Registro registro = new Registro();
+    //Panel = new Fondo(this);
+    //Fondo Contenedor = new Fondo(this);
+    //Registro registro = new Registro(this);
     static Textwriter writer = new Textwriter();
+    //static JPanel Panel;
     SerialPortEventListener evento = new SerialPortEventListener() {
         @Override
         public void serialEvent(SerialPortEvent spe) {
@@ -27,8 +31,10 @@ public class VentanadeCobro extends javax.swing.JFrame {
     public VentanadeCobro() {
       
         initComponents();
-        setContentPane(Contenedor);
-        //setContentPane(registro);
+        Panel.add(new Fondo(this));
+        //setContentPane(Panel);
+        validate();
+     
             try {
                 Arduino.arduinoRX("COM3", 9600, evento);
                
@@ -38,32 +44,27 @@ public class VentanadeCobro extends javax.swing.JFrame {
             }
          
     }
+     
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        Panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cafeterias UN");
         setLocation(new java.awt.Point(300, 100));
         setPreferredSize(new java.awt.Dimension(451, 601));
         setResizable(false);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 463, Short.MAX_VALUE)
-        );
+        Panel.setLayout(new java.awt.CardLayout());
+        getContentPane().add(Panel, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-//   
+
     
     public static void main(String args[]) {
        
@@ -93,12 +94,13 @@ public class VentanadeCobro extends javax.swing.JFrame {
         });
         while (true) {
             Lector.leer(Arduino);
-            Lector.setDatos(Contenedor.textoNombre, Contenedor.textoCarrera, Contenedor.textoDocumento, Contenedor.textoSaldo, Contenedor.Foto, Arduino);
-            //System.out.println(RXTX_Arduino.photo);
-            //writer.guardardatos();
+            Lector.setDatos(Fondo.textoNombre, Fondo.textoCarrera, Fondo.textoDocumento, Fondo.textoSaldo,Fondo.Foto, Arduino);
+            Lector.actualizarTextos(Arduino);
+
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JPanel Panel;
     // End of variables declaration//GEN-END:variables
 }

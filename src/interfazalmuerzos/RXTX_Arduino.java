@@ -1,6 +1,7 @@
 
 package interfazalmuerzos;
 
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -14,6 +15,8 @@ public class RXTX_Arduino{
     static long DocSaldos[][] = new long [4][2];
     int aux=0;
     static String photo="goku";
+    boolean valido = false;
+    //Registro registro = new Registro(this);
     
     public void informacion(){
         NombreCarrera[0][0] = "Enderson Gonzalo Diaz Muñoz";
@@ -82,9 +85,26 @@ public class RXTX_Arduino{
             NumberUID = Arduino.printMessage();
             System.out.println("Leer...");
             System.out.println(NumberUID);
-
+            valido = true;
         }
 
+    }
+    
+    public void actualizarTextos(PanamaHitek_Arduino Arduino){
+        if(Arduino.isMessageAvailable()) {
+            NumberUID = Arduino.printMessage();
+            if(NumberUID.startsWith("Card UID:")){
+            
+            System.out.println("Tarjeta Valida");
+            System.out.println(NumberUID);
+            //return true;
+           Registro.revisionTarjeta.setText("Tarjeta valida");
+           Registro.revisionTarjeta.setForeground(Color.GREEN);
+           Registro.textCarrera.setEnabled(true);
+           Registro.textDocumento.setEnabled(true);
+           Registro.textNombre.setEnabled(true);
+            }
+        }
     }
 }
     
