@@ -5,12 +5,15 @@
  */
 package interfazalmuerzos;
 
+
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 import panamahitek.Arduino.PanamaHitek_Arduino;
 
 /**
@@ -20,17 +23,19 @@ import panamahitek.Arduino.PanamaHitek_Arduino;
 public class Registro extends javax.swing.JPanel {
     Image Background2;
     VentanadeCobro f;
-    String NumberUID;
+    public static String NumberUID;
     String nombre;
     String documento;
     String carrera;
+    String saldo;
     PanamaHitek_Arduino Arduino = new PanamaHitek_Arduino();
     Textwriter writer = new Textwriter();
     public Registro(VentanadeCobro d) {
         initComponents();
-        textNombre.setEnabled(false);
-        textCarrera.setEnabled(false);
-        textDocumento.setEnabled(false);
+//        textNombre.setEnabled(false);
+//        textCarrera.setEnabled(false);
+//        textDocumento.setEnabled(false);
+
         
         //fondo = new Fondo(f);
         this.f = d;
@@ -46,7 +51,23 @@ public class Registro extends javax.swing.JPanel {
         super.paint(g);
        repaint();
     }
-
+//public static void actualizarTextos(PanamaHitek_Arduino Arduino){
+//        if (Arduino.isMessageAvailable()) {
+//            NumberUID = Arduino.printMessage();
+//            if (NumberUID.startsWith("Card UID:")) {
+//                
+//                System.out.println("Tarjeta Valida");
+//                System.out.println(NumberUID);
+//                //Registro.NumberUID = NumberUID;
+//                Registro.revisionTarjeta.setText("Tarjeta valida");
+//                Registro.revisionTarjeta.setForeground(Color.GREEN);
+//                Registro.textCarrera2.setEnabled(true);
+//                Registro.textDocumento2.setEnabled(true);
+//                Registro.textNombre2.setEnabled(true);
+//              
+//            }
+//        }
+//    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -60,8 +81,9 @@ public class Registro extends javax.swing.JPanel {
         textDocumento = new javax.swing.JTextField();
         Titulo = new javax.swing.JLabel();
         buttonGuardar = new javax.swing.JButton();
-        revisionTarjeta = new javax.swing.JLabel();
         atrasButton = new javax.swing.JButton();
+        Labelsaldo = new javax.swing.JLabel();
+        textSaldo = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(450, 603));
 
@@ -104,11 +126,6 @@ public class Registro extends javax.swing.JPanel {
             }
         });
 
-        revisionTarjeta.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        revisionTarjeta.setForeground(new java.awt.Color(0, 0, 255));
-        revisionTarjeta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        revisionTarjeta.setText("Acerque una tarjeta");
-
         atrasButton.setBackground(new java.awt.Color(240, 215, 141));
         atrasButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         atrasButton.setText("Atrás");
@@ -118,65 +135,73 @@ public class Registro extends javax.swing.JPanel {
             }
         });
 
+        Labelsaldo.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        Labelsaldo.setText("Saldo");
+
+        textSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textSaldoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Nombre)
-                    .addComponent(Documento)
-                    .addComponent(Carrera))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(revisionTarjeta))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
+                            .addComponent(Nombre)
+                            .addComponent(Documento)
+                            .addComponent(Carrera)
+                            .addComponent(Labelsaldo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(atrasButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 34, Short.MAX_VALUE))
+                            .addComponent(textCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                            .addComponent(textDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                            .addComponent(textSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(buttonGuardar)
+                                .addComponent(atrasButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textNombre))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(31, 31, 31)
                 .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(revisionTarjeta)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nombre)
-                    .addComponent(textNombre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Carrera)
-                    .addComponent(textCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(Carrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Documento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Documento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(textDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Labelsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(textSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(atrasButton)
-                .addGap(287, 287, 287))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -200,31 +225,42 @@ public class Registro extends javax.swing.JPanel {
     }//GEN-LAST:event_atrasButtonActionPerformed
 
     private void buttonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGuardarActionPerformed
-        // TODO add your handling code here:
-         //if (tarjeta(Arduino)){
-        //textNombre.setEnabled(true);
-        //textNombre.validate();
-        System.out.println("documento " + documento + "\n" + "carrera " + carrera + "\n" + "nombre " + nombre);
+        
+        NumberUID = RXTX_Arduino.NumberUID2;
+        //
+        
         try {
-            writer.guardardatos(NumberUID, nombre, carrera, documento);
+            writer.guardardatos(NumberUID, nombre, carrera, documento, saldo);
             System.out.println("presionado");
+            NumberUID = null;
+            nombre = null;
+            carrera = null;
+            documento = null;
+            saldo = null;
             //Arduino.sendData("a");
         } catch (Exception ex) {
             Logger.getLogger(VentanadeCobro.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_buttonGuardarActionPerformed
 
+    private void textSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSaldoActionPerformed
+        // TODO add your handling code here:
+        saldo = textSaldo.getText();
+    }//GEN-LAST:event_textSaldoActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Carrera;
     private javax.swing.JLabel Documento;
+    private javax.swing.JLabel Labelsaldo;
     private javax.swing.JLabel Nombre;
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton atrasButton;
     private javax.swing.JButton buttonGuardar;
-    public static javax.swing.JLabel revisionTarjeta;
     public static javax.swing.JTextField textCarrera;
     public static javax.swing.JTextField textDocumento;
     public static javax.swing.JTextField textNombre;
+    public static javax.swing.JTextField textSaldo;
     // End of variables declaration//GEN-END:variables
 }

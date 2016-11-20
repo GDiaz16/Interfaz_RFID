@@ -10,12 +10,9 @@ import javax.swing.JPanel;
 import panamahitek.Arduino.PanamaHitek_Arduino;
 
 public class VentanadeCobro extends javax.swing.JFrame {
-    //Fondo p;
+    
     static PanamaHitek_Arduino Arduino = new PanamaHitek_Arduino();
     static RXTX_Arduino Lector = new RXTX_Arduino();
-    //Panel = new Fondo(this);
-    //Fondo Contenedor = new Fondo(this);
-    //Registro registro = new Registro(this);
     static Textwriter writer = new Textwriter();
     //static JPanel Panel;
     SerialPortEventListener evento = new SerialPortEventListener() {
@@ -95,8 +92,7 @@ public class VentanadeCobro extends javax.swing.JFrame {
         while (true) {
             Lector.leer(Arduino);
             Lector.setDatos(Fondo.textoNombre, Fondo.textoCarrera, Fondo.textoDocumento, Fondo.textoSaldo,Fondo.Foto, Arduino);
-            Lector.actualizarTextos(Arduino);
-
+         
         }
     }
 
